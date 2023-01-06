@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>UK Tax Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    input {
+      width: 60%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin: 8px 0;
+    }
+    .btn {
+      width: 20%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 8px 0;
+    }
+    .btn:hover {
+      background-color: #45a049;
+    }
+    .result {
+      margin: 16px 0;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>UK Tax Calculator</h1>
+    <p>Enter your income to calculate your tax:</p>
+    <input type="number" id="income" placeholder="Income">
+    <button class="btn" onclick="calculateTax()">Calculate</button>
+    <div id="result" class="result"></div>
+  </div>
+  <script>
+    function calculateTax() {
+      // Get the income from the input field
+      const income = document.getElementById("income").value;
+
+      // Calculate the tax according to UK tax brackets
+      let tax = 0;
+      if (income > 12500 && income <= 50000) {
+        tax = (income - 12500) * 0.2;
+      } else if (income > 50000) {
+        tax = (50000 - 12500) * 0.2 + (income - 50000) * 0.4;
+      }
+
+      // Display the result
+      const resultDiv = document.getElementById("result");
+      resultDiv.innerHTML = `Your tax is £${tax.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>
